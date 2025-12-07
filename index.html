@@ -1,1 +1,163 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <title>OFA DRIVER SUPPORT PORTAL</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <!-- ロック画面（パスコード入力） -->
+  <div id="lock-screen">
+    <header class="lock-header">
+      <h1>OFA DRIVER SUPPORT</h1>
+      <p>メンバー専用ポータル</p>
+    </header>
 
+    <main class="lock-main">
+      <p class="lock-text">
+        契約ドライバー専用ページです。<br>
+        配布されたパスコードを入力してください。
+      </p>
+
+      <input
+        type="password"
+        id="accessCode"
+        class="lock-input"
+        placeholder="パスコードを入力"
+      >
+
+      <button id="unlockButton" class="primary-button">
+        ログイン
+      </button>
+
+      <p id="lockMessage" class="lock-message"></p>
+    </main>
+  </div>
+
+  <!-- アプリ本体 -->
+  <div id="app" class="hidden">
+    <header class="app-header">
+      <div>
+        <h1>OFA DRIVER SUPPORT</h1>
+        <p>株式会社OFA 軽貨物ドライバー業務ポータル</p>
+      </div>
+    </header>
+
+    <main class="app-main">
+
+      <!-- 今日の業務メニュー -->
+      <section class="block">
+        <h2>📅 今日の業務</h2>
+        <div class="grid">
+          <a class="card card-main" href="#" target="_blank">
+            <h3>Web点呼（始業・終業）</h3>
+            <p>アルコールチェック・体調・車両確認</p>
+          </a>
+
+          <a class="card card-main" href="#" target="_blank">
+            <h3>日報・売上入力</h3>
+            <p>配達件数・チャーター・代引きなど</p>
+          </a>
+
+          <a class="card card-alert" href="#" target="_blank">
+            <h3>事故・トラブル報告</h3>
+            <p>事故・クレーム・ヒヤリハットを即時共有</p>
+          </a>
+        </div>
+      </section>
+
+      <!-- 車両 / 契約 / 申請 -->
+      <section class="block">
+        <h2>🚐 車両・契約・申請</h2>
+        <div class="grid">
+          <a class="card" href="#" target="_blank">
+            <h3>車両管理</h3>
+            <p>車検・任意保険・整備・ステッカー登録</p>
+          </a>
+
+          <a class="card" href="#" target="_blank">
+            <h3>契約書・FC資料</h3>
+            <p>業務委託契約・車両貸与・FC契約など</p>
+          </a>
+
+          <a class="card" href="#" target="_blank">
+            <h3>各種申請フォーム</h3>
+            <p>休車・経費・名義変更・コンプラ報告</p>
+          </a>
+        </div>
+      </section>
+
+      <!-- コミュニティ / 情報 -->
+      <section class="block">
+        <h2>🤝 コミュニティ・情報共有</h2>
+        <div class="grid">
+          <a class="card" href="#" target="_blank">
+            <h3>メンバー掲示板</h3>
+            <p>匿名相談・現場のアイデア・共有事項</p>
+          </a>
+
+          <a class="card" href="#" target="_blank">
+            <h3>OFAからのお知らせ</h3>
+            <p>法改正・繁忙期情報・新案件</p>
+          </a>
+
+          <a class="card" href="#" target="_blank">
+            <h3>研修動画（OFA Academy）</h3>
+            <p>新人研修・マナー・スキルアップ</p>
+          </a>
+        </div>
+      </section>
+
+      <!-- 紹介・LINE・外部サービス -->
+      <section class="block">
+        <h2>🌍 紹介・外部サービス</h2>
+        <div class="grid">
+          <a class="card" href="#" target="_blank">
+            <h3>ドライバー紹介ページ</h3>
+            <p>各リーダー別 紹介フォーム・QR</p>
+          </a>
+
+          <a class="card" href="https://lin.ee/X02Cxk3" target="_blank">
+            <h3>OFA メンバーシップLINE</h3>
+            <p>報告・点呼・事故・車両管理を一本化</p>
+          </a>
+
+          <a class="card" href="#" target="_blank">
+            <h3>OFA一般公式LINE</h3>
+            <p>求人・問い合わせ窓口</p>
+          </a>
+
+          <a class="card" href="#" target="_blank">
+            <h3>送りっぱ！ / tebura</h3>
+            <p>店舗向けサービス案内・利用者画面</p>
+          </a>
+        </div>
+      </section>
+
+      <!-- ヘルプ -->
+      <section class="block">
+        <h2>❓ ヘルプ・連絡先</h2>
+        <div class="grid">
+          <a class="card" href="#" target="_blank">
+            <h3>現場トラブルQ&A</h3>
+            <p>配達不可・代引きトラブル・大雪・台風など</p>
+          </a>
+
+          <a class="card" href="#" target="_blank">
+            <h3>運行管理者・本部連絡先</h3>
+            <p>緊急連絡先・営業時間・連絡ルール</p>
+          </a>
+        </div>
+      </section>
+
+    </main>
+
+    <footer class="app-footer">
+      <p>© 2025 OFA GROUP / One for All, All for One</p>
+    </footer>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
