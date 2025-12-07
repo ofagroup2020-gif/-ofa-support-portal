@@ -1,1 +1,39 @@
+// ===== 簡易パスコード（好きなコードに変更OK） =====
+const ACCESS_CODE = "ofa2025"; // ★ここを好きなコードに変えてOK
 
+document.addEventListener("DOMContentLoaded", () => {
+  const lockScreen = document.getElementById("lock-screen");
+  const app = document.getElementById("app");
+  const input = document.getElementById("accessCode");
+  const button = document.getElementById("unlockButton");
+  const message = document.getElementById("lockMessage");
+
+  // すでにログイン済みなら自動で開く（簡易）
+  const isUnlocked = localStorage.getItem("ofa_portal_unlocked") === "true";
+  if (isUnlocked) {
+    lockScreen.classList.add("hidden");
+    app.classList.remove("hidden");
+  }
+
+  const tryUnlock = () => {
+    const value = input.value.trim();
+    if (value === ACCESS_CODE) {
+      // ログイン成功
+      localStorage.setItem("ofa_portal_unlocked", "true");
+      lockScreen.classList.add("hidden");
+      app.classList.remove("hidden");
+    } else {
+      message.textContent = "パスコードが違います。再度入力してください。";
+      input.value = "";
+      input.focus();
+    }
+  };
+
+  button.addEventListener("click", tryUnlock);
+
+  input.addEventListener("keydown", (e) => {
+    if (e.key === "Enter") {
+      tryUnlock();
+    }
+  });
+});
