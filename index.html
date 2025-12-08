@@ -1,40 +1,236 @@
 <!DOCTYPE html>
 <html lang="ja">
 <head>
-  <meta charset="UTF-8">
+  <meta charset="UTF-8" />
   <title>OFA DRIVER SUPPORT</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700;900&display=swap" rel="stylesheet" />
+  <style>
+    *{box-sizing:border-box;}
 
-  <!-- CSS -->
-  <link rel="stylesheet" href="styles.css">
-  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700;900&display=swap" rel="stylesheet">
+    body{
+      margin:0;
+      font-family:"Noto Sans JP",-apple-system,BlinkMacSystemFont,system-ui,sans-serif;
+      color:#111827;
+      background:linear-gradient(130deg,#ff4b2b,#ffbb00,#00c3ff,#7a5cff);
+      background-size:450% 450%;
+      animation:bgMove 16s ease infinite;
+    }
+    @keyframes bgMove{
+      0%{background-position:0% 50%;}
+      50%{background-position:100% 50%;}
+      100%{background-position:0% 50%;}
+    }
+
+    .screen{
+      min-height:100vh;
+      padding:22px 16px 26px;
+      display:flex;
+      flex-direction:column;
+    }
+
+    /* ロック画面 */
+    .lock-header{
+      text-align:center;
+      margin-top:40px;
+      margin-bottom:20px;
+      color:#fff;
+      text-shadow:0 3px 10px rgba(0,0,0,.45);
+    }
+    .lock-header h1{
+      font-size:1.8rem;
+      font-weight:900;
+      letter-spacing:.06em;
+      margin:0;
+    }
+    .lock-header p{
+      margin-top:4px;
+      font-size:.95rem;
+      opacity:.9;
+    }
+    .lock-main{
+      margin-top:20px;
+      padding:24px 18px 28px;
+      border-radius:26px;
+      background:rgba(15,23,42,.92);
+      color:#f9fafb;
+      max-width:480px;
+      width:100%;
+      margin-left:auto;
+      margin-right:auto;
+      box-shadow:0 20px 42px rgba(0,0,0,.55);
+    }
+    .lock-text{
+      font-size:.9rem;
+      line-height:1.6;
+      margin-bottom:18px;
+    }
+    .lock-input{
+      width:100%;
+      padding:11px 16px;
+      border-radius:999px;
+      border:none;
+      background:#020617;
+      color:#f9fafb;
+      font-size:1rem;
+      outline:none;
+      margin-bottom:14px;
+      box-shadow:inset 0 0 10px rgba(255,255,255,.08);
+    }
+    .lock-input::placeholder{color:#6b7280;}
+    .primary-button{
+      width:100%;
+      padding:13px 8px;
+      border-radius:999px;
+      border:none;
+      background:linear-gradient(135deg,#ffe600,#ff8c00);
+      color:#111827;
+      font-weight:900;
+      font-size:1.05rem;
+      letter-spacing:.08em;
+      box-shadow:0 12px 24px rgba(0,0,0,.45);
+    }
+    .primary-button:active{
+      transform:translateY(2px);
+      box-shadow:0 6px 14px rgba(0,0,0,.45);
+    }
+    .lock-message{
+      margin-top:10px;
+      font-size:.8rem;
+      color:#f97373;
+    }
+
+    /* アプリ本体 */
+    .app-header{
+      padding:14px 14px 10px;
+      border-radius:24px;
+      background:rgba(15,23,42,.96);
+      color:#f9fafb;
+      box-shadow:0 14px 32px rgba(0,0,0,.55);
+      margin-bottom:16px;
+      text-align:center;
+    }
+    .app-header h1{
+      font-size:1.45rem;
+      font-weight:900;
+      margin:0;
+      letter-spacing:.06em;
+    }
+    .app-header p{
+      margin:4px 0 0;
+      font-size:.8rem;
+      opacity:.9;
+    }
+
+    .app-main{flex:1;}
+
+    .block{
+      margin-top:18px;
+      padding:18px 14px 16px;
+      border-radius:26px;
+      background:rgba(255,255,255,.96);
+      box-shadow:0 12px 26px rgba(0,0,0,.22);
+    }
+
+    .icon-section-title{
+      font-size:.96rem;
+      font-weight:900;
+      margin:0 0 12px;
+      display:flex;
+      align-items:center;
+      gap:6px;
+      color:#111827;
+    }
+    .icon-section-title span{font-size:1.2rem;}
+
+    .icon-grid{
+      display:grid;
+      grid-template-columns:repeat(3,1fr);
+      gap:16px;
+    }
+
+    .icon-btn{
+      text-decoration:none;
+      display:flex;
+      flex-direction:column;
+      align-items:center;
+      padding:16px 6px;
+      border-radius:26px;
+      background:#ffffff;
+      box-shadow:0 10px 22px rgba(0,0,0,.18);
+      color:#111827;
+      text-align:center;
+      transition:transform .12s,box-shadow .12s;
+    }
+    .icon-btn:active{
+      transform:translateY(3px) scale(.97);
+      box-shadow:0 4px 12px rgba(0,0,0,.25);
+    }
+    .icon-btn.disabled{
+      opacity:.55;
+      pointer-events:none;
+    }
+
+    .icon-circle{
+      width:64px;
+      height:64px;
+      border-radius:22px;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      margin-bottom:6px;
+      font-size:30px;
+      font-weight:900;
+      color:#0f172a;
+    }
+    .icon-circle.yellow{background:linear-gradient(135deg,#ffe600,#ffb800);}
+    .icon-circle.pink{background:linear-gradient(135deg,#ff3b94,#ff6b6b);}
+    .icon-circle.blue{background:linear-gradient(135deg,#00c3ff,#006bff);}
+    .icon-circle.green{background:linear-gradient(135deg,#00ffa1,#00cc67);}
+    .icon-circle.red{background:linear-gradient(135deg,#ff3355,#ff0066);}
+
+    .icon-label-main{
+      font-size:.84rem;
+      font-weight:900;
+      margin-top:2px;
+    }
+    .icon-label-sub{
+      font-size:.68rem;
+      color:#6b7280;
+      margin-top:1px;
+    }
+
+    .app-footer{
+      margin-top:20px;
+      text-align:center;
+      font-size:.72rem;
+      color:#f9fafb;
+      text-shadow:0 2px 6px rgba(0,0,0,.6);
+    }
+
+    @media(max-width:420px){
+      .screen{padding:20px 12px 24px;}
+      .icon-grid{gap:14px;}
+      .lock-header h1{font-size:1.6rem;}
+      .app-header h1{font-size:1.35rem;}
+    }
+  </style>
 </head>
-
 <body>
-  <!-- ロック画面（ログイン） -->
+
+  <!-- ロック画面 -->
   <div id="lock-screen" class="screen">
     <header class="lock-header">
       <h1>OFA DRIVER SUPPORT</h1>
-      <p>メンバー専用ポータル</p>
+      <p>OFA GROUP 軽貨物ドライバー専用ポータル</p>
     </header>
-
     <main class="lock-main">
       <p class="lock-text">
-        契約ドライバー専用ページです。<br>
-        配布されたパスコードを入力してください。
+        フランチャイズ・業務委託ドライバー専用ページです。<br />
+        契約時に案内されたパスコードを入力してください。
       </p>
-
-      <input
-        type="password"
-        id="accessCode"
-        class="lock-input"
-        placeholder="パスコードを入力"
-      >
-
-      <button class="primary-button" onclick="ofaUnlock()">
-        ログイン
-      </button>
-
+      <input type="password" id="accessCode" class="lock-input" placeholder="パスコードを入力" />
+      <button class="primary-button" onclick="ofaUnlock()">ログイン</button>
       <p id="lockMessage" class="lock-message"></p>
     </main>
   </div>
@@ -43,82 +239,62 @@
   <div id="app" class="screen" style="display:none;">
     <header class="app-header">
       <h1>OFA DRIVER SUPPORT</h1>
-      <p>株式会社OFA 軽貨物ドライバーポータル</p>
+      <p>株式会社OFA / 軽貨物フランチャイズ ドライバーポータル</p>
     </header>
 
     <main class="app-main">
 
-      <!-- 今日の業務：アイコンボタン -->
+      <!-- 今日の業務 -->
       <section class="block">
-        <h2 class="icon-section-title">
-          <span>📅</span> 今日の業務
-        </h2>
-
+        <h2 class="icon-section-title"><span>📅</span> 今日の業務</h2>
         <div class="icon-grid">
-
-          <!-- Web点呼 -->
-          <a class="icon-btn"
-             href="https://ofagroup2020-gif.github.io/ofa-nippou/web_tenko_ofa.html"
-             target="_blank">
+          <a class="icon-btn" href="https://ofagroup2020-gif.github.io/ofa-nippou/web_tenko_ofa.html" target="_blank">
             <div class="icon-circle yellow">🚦</div>
             <div class="icon-label-main">Web点呼</div>
-            <div class="icon-label-sub">始業・終業</div>
+            <div class="icon-label-sub">始業・終業点呼</div>
           </a>
 
-          <!-- 日報・売上 -->
-          <a class="icon-btn"
-             href="https://ofagroup2020-gif.github.io/ofa-uriage-keisan/"
-             target="_blank">
+          <a class="icon-btn" href="https://ofagroup2020-gif.github.io/ofa-uriage-keisan/" target="_blank">
             <div class="icon-circle pink">📊</div>
             <div class="icon-label-main">日報・売上</div>
             <div class="icon-label-sub">件数・チャーター</div>
           </a>
 
-          <!-- 事故・トラブル -->
           <a class="icon-btn disabled" href="#">
             <div class="icon-circle red">⚠️</div>
             <div class="icon-label-main">事故・トラブル</div>
-            <div class="icon-label-sub">報告（準備中）</div>
+            <div class="icon-label-sub">報告フォーム（準備中）</div>
           </a>
-
         </div>
       </section>
 
       <!-- 車両・契約・申請 -->
       <section class="block">
-        <h2 class="icon-section-title">
-          <span>🚐</span> 車両・契約・申請
-        </h2>
-
+        <h2 class="icon-section-title"><span>🚐</span> 車両・契約・申請</h2>
         <div class="icon-grid">
-
           <a class="icon-btn disabled" href="#">
-            <div class="icon-circle green">🚗</div>
+            <div class="icon-circle.green icon-circle green">🚐</div>
             <div class="icon-label-main">車両管理</div>
-            <div class="icon-label-sub">車検・保険など</div>
+            <div class="icon-label-sub">車検・保険・整備（準備中）</div>
           </a>
 
           <a class="icon-btn disabled" href="#">
             <div class="icon-circle blue">📄</div>
-            <div class="icon-label-main">契約書</div>
-            <div class="icon-label-sub">FC資料</div>
+            <div class="icon-label-main">契約書・FC資料</div>
+            <div class="icon-label-sub">業務委託・フランチャイズ</div>
           </a>
 
           <a class="icon-btn disabled" href="#">
             <div class="icon-circle yellow">📝</div>
             <div class="icon-label-main">申請フォーム</div>
-            <div class="icon-label-sub">休車・経費など</div>
+            <div class="icon-label-sub">休車・経費申請</div>
           </a>
-
         </div>
       </section>
 
       <!-- コミュニティ・情報 -->
       <section class="block">
-        <h2 class="icon-section-title">
-          <span>🤝</span> コミュニティ・情報
-        </h2>
-
+        <h2 class="icon-section-title"><span>🤝</span> コミュニティ・情報</h2>
         <div class="icon-grid">
           <a class="icon-btn disabled" href="#">
             <div class="icon-circle pink">💬</div>
@@ -126,17 +302,13 @@
             <div class="icon-label-sub">匿名相談（準備中）</div>
           </a>
 
-          <a class="icon-btn"
-             href="https://ofagroup.blogspot.com/?m=1"
-             target="_blank">
+          <a class="icon-btn" href="https://ofagroup.blogspot.com/?m=1" target="_blank">
             <div class="icon-circle blue">📰</div>
             <div class="icon-label-main">OFAブログ</div>
             <div class="icon-label-sub">代表メッセージ</div>
           </a>
 
-          <a class="icon-btn"
-             href="https://www.instagram.com/ofa.group_inc?igsh=MTEweDYxc2xraGN5ZA%3D%3D&utm_source=qr"
-             target="_blank">
+          <a class="icon-btn" href="https://www.instagram.com/ofa.group_inc?igsh=MTEweDYxc2xraGN5ZA%3D%3D&utm_source=qr" target="_blank">
             <div class="icon-circle yellow">📷</div>
             <div class="icon-label-main">Instagram</div>
             <div class="icon-label-sub">現場の様子</div>
@@ -146,23 +318,15 @@
 
       <!-- LINE・外部サービス -->
       <section class="block">
-        <h2 class="icon-section-title">
-          <span>🌐</span> LINE・外部サービス
-        </h2>
-
+        <h2 class="icon-section-title"><span>🌐</span> LINE・外部サービス</h2>
         <div class="icon-grid">
-
-          <a class="icon-btn"
-             href="https://lin.ee/qExHnzh"
-             target="_blank">
+          <a class="icon-btn" href="https://lin.ee/qExHnzh" target="_blank">
             <div class="icon-circle green">👥</div>
             <div class="icon-label-main">メンバーLINE</div>
             <div class="icon-label-sub">契約者専用</div>
           </a>
 
-          <a class="icon-btn"
-             href="https://lin.ee/RUj5HfL"
-             target="_blank">
+          <a class="icon-btn" href="https://lin.ee/RUj5HfL" target="_blank">
             <div class="icon-circle pink">📨</div>
             <div class="icon-label-main">公式LINE</div>
             <div class="icon-label-sub">求人・問い合わせ</div>
@@ -173,46 +337,42 @@
             <div class="icon-label-main">送りっぱ！</div>
             <div class="icon-label-sub">tebura（準備中）</div>
           </a>
-
         </div>
       </section>
 
     </main>
 
     <footer class="app-footer">
-      <p>© 2025 OFA GROUP / One for All, All for One</p>
+      <p>© 2025 OFA GROUP – One for All, All for One</p>
     </footer>
   </div>
 
-  <!-- ログイン用JS -->
   <script>
-    var OFA_ACCESS_CODE = "ofa2025";
+    const OFA_ACCESS_CODE = "ofa2025";
 
     function ofaUnlock() {
-      var lockScreen = document.getElementById("lock-screen");
-      var app = document.getElementById("app");
-      var input = document.getElementById("accessCode");
-      var message = document.getElementById("lockMessage");
+      const lock = document.getElementById("lock-screen");
+      const app = document.getElementById("app");
+      const input = document.getElementById("accessCode");
+      const msg = document.getElementById("lockMessage");
+      if (!lock || !app || !input || !msg) return;
 
-      if (!lockScreen || !app || !input) return;
-
-      var value = (input.value || "").trim();
-
-      if (value === OFA_ACCESS_CODE) {
-        lockScreen.style.display = "none";
-        app.style.display = "block";
-        message.textContent = "";
+      const val = (input.value || "").trim();
+      if (val === OFA_ACCESS_CODE) {
+        lock.style.display = "none";
+        app.style.display = "flex";
+        msg.textContent = "";
       } else {
-        message.textContent = "パスコードが違います。もう一度入力してください。";
+        msg.textContent = "パスコードが違います。もう一度入力してください。";
         input.value = "";
         input.focus();
       }
     }
 
-    document.addEventListener("DOMContentLoaded", function () {
-      var input = document.getElementById("accessCode");
+    document.addEventListener("DOMContentLoaded", () => {
+      const input = document.getElementById("accessCode");
       if (!input) return;
-      input.addEventListener("keydown", function (e) {
+      input.addEventListener("keydown", (e) => {
         if (e.key === "Enter" || e.keyCode === 13) {
           ofaUnlock();
         }
