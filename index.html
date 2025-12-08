@@ -5,12 +5,12 @@
   <title>OFA DRIVER SUPPORT PORTAL</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <!-- CSSファイル（ファイル名：styles.css） -->
+  <!-- CSSファイル（styles.css） -->
   <link rel="stylesheet" href="styles.css">
 </head>
 
 <body>
-  <!-- ロック画面（パスコード入力） -->
+  <!-- ロック画面 -->
   <div id="lock-screen">
     <header class="lock-header">
       <h1>OFA DRIVER SUPPORT</h1>
@@ -30,7 +30,7 @@
         placeholder="パスコードを入力"
       >
 
-      <!-- ここに onclick を直接書く -->
+      <!-- ここで ofaUnlock() を直接呼ぶ -->
       <button id="unlockButton" class="primary-button" onclick="ofaUnlock()">
         ログイン
       </button>
@@ -47,7 +47,6 @@
     </header>
 
     <main class="app-main">
-
       <!-- 今日の業務 -->
       <section class="block">
         <h2>📅 今日の業務</h2>
@@ -97,7 +96,6 @@
       <!-- コミュニティ -->
       <section class="block">
         <h2>🤝 コミュニティ・情報共有</h2>
-
         <div class="grid">
           <a class="card" href="#" target="_blank">
             <h3>メンバー掲示板</h3>
@@ -129,7 +127,6 @@
       <section class="block">
         <h2>🌍 紹介・外部サービス</h2>
         <div class="grid">
-
           <a class="card" href="#" target="_blank">
             <h3>ドライバー紹介</h3>
             <p>各リーダー別QR（準備中）</p>
@@ -175,9 +172,8 @@
     </footer>
   </div>
 
-  <!-- ★ 一番下に、超シンプルなJSだけを書く -->
+  <!-- JS（テスト用アラート付き） -->
   <script>
-    // パスコード
     var OFA_ACCESS_CODE = "ofa2025";
 
     function ofaUnlock() {
@@ -192,20 +188,21 @@
 
       var value = (input.value || "").trim();
 
+      // ★テスト用：ボタンが反応しているかを確認する
+      alert("ログインボタンが押されました。\n入力値: " + value);
+
       if (value === OFA_ACCESS_CODE) {
-        // 成功：ロック画面を隠して本体を表示
         lockScreen.classList.add("hidden");
         app.classList.remove("hidden");
         message.textContent = "";
       } else {
-        // 失敗
         message.textContent = "パスコードが違います。もう一度入力してください。";
         input.value = "";
         input.focus();
       }
     }
 
-    // Enterキーでも解錠できるようにする
+    // Enterキーでも解錠
     document.addEventListener("DOMContentLoaded", function () {
       var input = document.getElementById("accessCode");
       if (!input) return;
