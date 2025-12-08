@@ -1,204 +1,90 @@
-/* ＝＝＝＝ 基本設定 ＝＝＝＝ */
-* {
-  box-sizing: border-box;
-}
+/* ==== アイコンボタン（アプリ風） ==== */
 
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, "Noto Sans JP", sans-serif;
-  background: #f3f4f6;
-  color: #111827;
-}
-
-/* 青いリンクのデフォルト装飾を消す */
-a {
-  color: inherit;
-  text-decoration: none;
-}
-
-/* 非表示用 */
-.hidden {
-  display: none;
-}
-
-/* ＝＝＝＝ ロック画面（パスコード入力） ＝＝＝＝ */
-#lock-screen {
-  min-height: 100vh;
-  background: #0f172a; /* ほぼ黒 */
-  color: #f9fafb;
-  display: flex;
-  flex-direction: column;
-}
-
-.lock-header {
-  padding: 24px 16px 12px;
-  text-align: center;
-  background: linear-gradient(135deg, #facc15, #f97316);
-  color: #111827;
-}
-
-.lock-header h1 {
-  margin: 0;
-  font-size: 22px;
-  font-weight: 900;
-  letter-spacing: 0.04em;
-}
-
-.lock-header p {
-  margin: 6px 0 0;
-  font-size: 12px;
-}
-
-.lock-main {
-  flex: 1;
-  padding: 24px 16px 32px;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-}
-
-.lock-text {
-  font-size: 14px;
-  line-height: 1.7;
-  margin-bottom: 16px;
-}
-
-.lock-input {
-  width: 100%;
-  padding: 12px;
-  margin-bottom: 12px;
-  border-radius: 10px;
-  border: 1px solid #4b5563;
-  background: #020617;
-  color: #f9fafb;
-  font-size: 16px;
-}
-
-.lock-input::placeholder {
-  color: #6b7280;
-}
-
-.primary-button {
-  width: 100%;
-  padding: 12px;
-  border: none;
-  border-radius: 999px;
-  font-size: 16px;
+.icon-section-title {
+  font-size: 1.1rem;
   font-weight: 700;
-  background: #facc15;
-  color: #111827;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.25);
-  cursor: pointer;
+  margin: 0 0 12px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
 }
 
-.primary-button:active {
-  transform: translateY(1px);
-  box-shadow: 0 2px 6px rgba(0,0,0,0.3);
+.icon-section-title span {
+  font-size: 1.3rem;
 }
 
-.lock-message {
-  margin-top: 8px;
-  font-size: 13px;
-  color: #f97316;
-}
-
-/* ＝＝＝＝ アプリヘッダー ＝＝＝＝ */
-.app-header {
-  background: #020617;  /* ほぼ黒 */
-  color: #f9fafb;
-  padding: 16px 16px 14px;
-  border-bottom: 1px solid rgba(148,163,184,0.4);
-}
-
-.app-header h1 {
-  margin: 0;
-  font-size: 18px;
-  font-weight: 900;
-  letter-spacing: 0.06em;
-}
-
-.app-header p {
-  margin: 4px 0 0;
-  font-size: 11px;
-  color: #e5e7eb;
-}
-
-/* ＝＝＝＝ メインレイアウト ＝＝＝＝ */
-.app-main {
-  padding: 16px;
-  max-width: 960px;
-  margin: 0 auto 72px;
-}
-
-/* セクションタイトル */
-.block {
-  margin-bottom: 24px;
-}
-
-.block h2 {
-  font-size: 15px;
-  margin: 0 0 10px;
-  padding-left: 8px;
-  border-left: 4px solid #facc15;
-  color: #111827;
-}
-
-/* カードのグリッド（スマホ先） */
-.grid {
+.icon-grid {
   display: grid;
-  grid-template-columns: 1fr;
-  gap: 10px;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 12px;
 }
 
-@media (min-width: 640px) {
-  .grid {
-    grid-template-columns: 1fr 1fr;
-  }
-}
-
-/* ＝＝＝＝ カード（ボタン）デザイン ＝＝＝＝ */
-.card {
-  display: block;
-  width: 100%;
-  padding: 10px 12px;
-  border-radius: 12px;
+.icon-btn {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  text-decoration: none;
+  padding: 10px 6px;
+  border-radius: 22px;
   background: #ffffff;
-  border: 1px solid #e5e7eb;
-  box-shadow: 0 2px 6px rgba(15,23,42,0.08);
-  transition: transform 0.08s ease-out, box-shadow 0.08s ease-out, border-color 0.08s;
+  box-shadow: 0 8px 18px rgba(15, 23, 42, 0.12);
+  transition: transform 0.12s ease, box-shadow 0.12s ease;
+  color: #111827;
 }
 
-.card-main {
-  border-left: 4px solid #facc15;
+.icon-btn:active {
+  transform: translateY(2px);
+  box-shadow: 0 4px 10px rgba(15, 23, 42, 0.18);
 }
 
-.card-alert {
-  border-left: 4px solid #ef4444;
-}
-
-.card h3 {
-  margin: 0 0 4px;
-  font-size: 14px;
+.icon-circle {
+  width: 52px;
+  height: 52px;
+  border-radius: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 6px;
+  font-size: 26px;
   font-weight: 700;
+  color: #111827;
+  background: linear-gradient(135deg, #ffe76a, #ffb347);
 }
 
-.card p {
-  margin: 0;
-  font-size: 12px;
+/* 色違いバリエーション */
+.icon-circle.pink {
+  background: linear-gradient(135deg, #ff9ac4, #ff6fb1);
+}
+
+.icon-circle.blue {
+  background: linear-gradient(135deg, #7fd8ff, #4da3ff);
+}
+
+.icon-circle.green {
+  background: linear-gradient(135deg, #7df7c0, #35c98a);
+}
+
+.icon-label-main {
+  font-size: 0.8rem;
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+.icon-label-sub {
+  margin-top: 2px;
+  font-size: 0.7rem;
   color: #6b7280;
 }
 
-/* タップ感 */
-.card:active {
-  transform: translateY(1px);
-  box-shadow: 0 1px 4px rgba(15,23,42,0.18);
-  border-color: #cbd5f5;
-}
-
-/* ＝＝＝＝ フッター ＝＝＝＝ */
-.app-footer {
-  text-align: center;
-  padding: 10px 8px 16px;
-  font-size: 11px;
-  color: #9ca3af;
+/* スマホで少し大きめに */
+@media (max-width: 420px) {
+  .icon-grid {
+    gap: 10px;
+  }
+  .icon-btn {
+    border-radius: 20px;
+    padding: 10px 4px;
+  }
 }
