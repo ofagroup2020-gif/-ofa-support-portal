@@ -5,7 +5,7 @@
   <title>OFA DRIVER SUPPORT PORTAL</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <!-- ★ 正しいCSSファイル名（styles.css） -->
+  <!-- CSSファイル（ファイル名：styles.css） -->
   <link rel="stylesheet" href="styles.css">
 </head>
 
@@ -30,7 +30,10 @@
         placeholder="パスコードを入力"
       >
 
-      <button id="unlockButton" class="primary-button">ログイン</button>
+      <!-- ここに onclick を直接書く -->
+      <button id="unlockButton" class="primary-button" onclick="ofaUnlock()">
+        ログイン
+      </button>
 
       <p id="lockMessage" class="lock-message"></p>
     </main>
@@ -172,48 +175,46 @@
     </footer>
   </div>
 
-  <!-- ★JavaScriptを直接埋め込み（確実に動く） -->
+  <!-- ★ 一番下に、超シンプルなJSだけを書く -->
   <script>
-    (function () {
-      function init() {
-        var lockScreen = document.getElementById("lock-screen");
-        var app = document.getElementById("app");
-        var input = document.getElementById("accessCode");
-        var button = document.getElementById("unlockButton");
-        var message = document.getElementById("lockMessage");
+    // パスコード
+    var OFA_ACCESS_CODE = "ofa2025";
 
-        if (!lockScreen || !app || !input || !button || !message) {
-          return;
-        }
+    function ofaUnlock() {
+      var lockScreen = document.getElementById("lock-screen");
+      var app = document.getElementById("app");
+      var input = document.getElementById("accessCode");
+      var message = document.getElementById("lockMessage");
 
-        // ★パスコードをここで設定
-        var ACCESS_CODE = "ofa2025";
-
-        function unlock() {
-          var value = (input.value || "").trim();
-          if (value === ACCESS_CODE) {
-            lockScreen.classList.add("hidden");
-            app.classList.remove("hidden");
-            message.textContent = "";
-          } else {
-            message.textContent = "パスコードが違います。もう一度入力してください。";
-            input.value = "";
-            input.focus();
-          }
-        }
-
-        button.addEventListener("click", unlock);
-        input.addEventListener("keydown", function (e) {
-          if (e.key === "Enter" || e.keyCode === 13) unlock();
-        });
+      if (!lockScreen || !app || !input || !message) {
+        return;
       }
 
-      if (document.readyState === "loading") {
-        document.addEventListener("DOMContentLoaded", init);
+      var value = (input.value || "").trim();
+
+      if (value === OFA_ACCESS_CODE) {
+        // 成功：ロック画面を隠して本体を表示
+        lockScreen.classList.add("hidden");
+        app.classList.remove("hidden");
+        message.textContent = "";
       } else {
-        init();
+        // 失敗
+        message.textContent = "パスコードが違います。もう一度入力してください。";
+        input.value = "";
+        input.focus();
       }
-    })();
+    }
+
+    // Enterキーでも解錠できるようにする
+    document.addEventListener("DOMContentLoaded", function () {
+      var input = document.getElementById("accessCode");
+      if (!input) return;
+      input.addEventListener("keydown", function (e) {
+        if (e.key === "Enter" || e.keyCode === 13) {
+          ofaUnlock();
+        }
+      });
+    });
   </script>
 
 </body>
