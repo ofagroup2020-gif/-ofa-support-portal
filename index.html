@@ -4,6 +4,7 @@
   <meta charset="UTF-8">
   <title>OFA DRIVER SUPPORT PORTAL</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- ★CSSファイル名が style.css の場合は、ここを style.css に変えてください -->
   <link rel="stylesheet" href="styles.css">
 </head>
 
@@ -28,6 +29,7 @@
         placeholder="パスコードを入力"
       >
 
+      <!-- onclick は保険。JSが動いていれば addEventListener が使われる -->
       <button id="unlockButton" class="primary-button">
         ログイン
       </button>
@@ -188,7 +190,53 @@
     </footer>
   </div>
 
-  <!-- ★script.js を version付きで読み込む（キャッシュ対策） -->
-  <script src="script.js?v=2"></script>
+  <!-- ★ここに直接JSを書く：外部ファイルに依存しない -->
+  <script>
+    (function () {
+      function init() {
+        var lockScreen = document.getElementById("lock-screen");
+        var app = document.getElementById("app");
+        var input = document.getElementById("accessCode");
+        var button = document.getElementById("unlockButton");
+        var message = document.getElementById("lockMessage");
+
+        if (!lockScreen || !app || !input || !button || !message) {
+          return;
+        }
+
+        // ★暗証番号（ここを変えればOK）
+        var ACCESS_CODE = "ofa2025";
+
+        function unlock() {
+          var value = (input.value || "").trim();
+          if (value === ACCESS_CODE) {
+            lockScreen.classList.add("hidden");
+            app.classList.remove("hidden");
+            message.textContent = "";
+          } else {
+            message.textContent = "パスコードが違います。もう一度入力してください。";
+            input.value = "";
+            input.focus();
+          }
+        }
+
+        // グローバルにも保険で置いておく
+        window.ofaUnlock = unlock;
+
+        button.addEventListener("click", unlock);
+        input.addEventListener("keydown", function (e) {
+          if (e.key === "Enter" || e.keyCode === 13) {
+            unlock();
+          }
+        });
+      }
+
+      if (document.readyState === "loading") {
+        document.addEventListener("DOMContentLoaded", init);
+      } else {
+        init();
+      }
+    })();
+  </script>
 </body>
 </html>
