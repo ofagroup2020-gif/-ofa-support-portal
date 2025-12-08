@@ -4,7 +4,8 @@
   <meta charset="UTF-8">
   <title>OFA DRIVER SUPPORT PORTAL</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <!-- ★CSSファイル名が style.css の場合は、ここを style.css に変えてください -->
+
+  <!-- ★ 正しいCSSファイル名（styles.css） -->
   <link rel="stylesheet" href="styles.css">
 </head>
 
@@ -29,10 +30,7 @@
         placeholder="パスコードを入力"
       >
 
-      <!-- onclick は保険。JSが動いていれば addEventListener が使われる -->
-      <button id="unlockButton" class="primary-button">
-        ログイン
-      </button>
+      <button id="unlockButton" class="primary-button">ログイン</button>
 
       <p id="lockMessage" class="lock-message"></p>
     </main>
@@ -41,20 +39,16 @@
   <!-- アプリ本体 -->
   <div id="app" class="hidden">
     <header class="app-header">
-      <div>
-        <h1>OFA DRIVER SUPPORT</h1>
-        <p>株式会社OFA 軽貨物ドライバー業務ポータル</p>
-      </div>
+      <h1>OFA DRIVER SUPPORT</h1>
+      <p>株式会社OFA 軽貨物ドライバー業務ポータル</p>
     </header>
 
     <main class="app-main">
 
-      <!-- 今日の業務メニュー -->
+      <!-- 今日の業務 -->
       <section class="block">
         <h2>📅 今日の業務</h2>
-
         <div class="grid">
-          <!-- Web点呼 -->
           <a class="card card-main"
              href="https://ofagroup2020-gif.github.io/ofa-nippou/web_tenko_ofa.html"
              target="_blank">
@@ -62,106 +56,95 @@
             <p>アルコールチェック・体調・車両確認</p>
           </a>
 
-          <!-- 日報・売上計算 -->
           <a class="card card-main"
              href="https://ofagroup2020-gif.github.io/ofa-uriage-keisan/"
              target="_blank">
             <h3>日報・売上計算</h3>
-            <p>配達件数・チャーター・個建・ロイヤルティなど</p>
+            <p>配達件数・チャーター・個建など</p>
           </a>
 
-          <!-- 事故・トラブル報告 -->
-          <a class="card card-alert"
-             href="#"
-             target="_blank">
+          <a class="card card-alert" href="#" target="_blank">
             <h3>事故・トラブル報告（準備中）</h3>
-            <p>事故・クレーム・ヒヤリハットを即時共有</p>
+            <p>事故・ヒヤリハット共有</p>
           </a>
         </div>
       </section>
 
-      <!-- 車両 / 契約 / 申請 -->
+      <!-- 車両・契約・申請 -->
       <section class="block">
         <h2>🚐 車両・契約・申請</h2>
-
         <div class="grid">
           <a class="card" href="#" target="_blank">
             <h3>車両管理</h3>
-            <p>車検・任意保険・整備・ステッカー登録（準備中）</p>
+            <p>車検・保険・整備記録（準備中）</p>
           </a>
 
           <a class="card" href="#" target="_blank">
             <h3>契約書・FC資料</h3>
-            <p>業務委託契約・車両貸与・FC契約など</p>
+            <p>業務委託・FC関連</p>
           </a>
 
           <a class="card" href="#" target="_blank">
             <h3>各種申請フォーム</h3>
-            <p>休車・経費・名義変更・コンプラ報告</p>
+            <p>休車・経費・名義変更など</p>
           </a>
         </div>
       </section>
 
-      <!-- コミュニティ / 情報共有 -->
+      <!-- コミュニティ -->
       <section class="block">
         <h2>🤝 コミュニティ・情報共有</h2>
 
         <div class="grid">
           <a class="card" href="#" target="_blank">
             <h3>メンバー掲示板</h3>
-            <p>匿名相談・現場のアイデア・共有事項（準備中）</p>
+            <p>匿名相談・意見交換（準備中）</p>
           </a>
 
-          <!-- OFAブログ -->
           <a class="card"
              href="https://ofagroup.blogspot.com/?m=1"
              target="_blank">
             <h3>OFAブログ / お知らせ</h3>
-            <p>法改正・繁忙期情報・OFAグループ最新情報</p>
+            <p>法改正・繁忙期情報など</p>
           </a>
 
-          <!-- Instagram -->
           <a class="card"
              href="https://www.instagram.com/ofa.group_inc?igsh=MTEweDYxc2xraGN5ZA%3D%3D&utm_source=qr"
              target="_blank">
             <h3>OFA公式Instagram</h3>
-            <p>現場の様子・募集情報・OFAの日常</p>
+            <p>現場の様子・日常</p>
           </a>
 
           <a class="card" href="#" target="_blank">
             <h3>研修動画（OFA Academy）</h3>
-            <p>新人研修・マナー・スキルアップ教材（準備中）</p>
+            <p>新人研修・マナー（準備中）</p>
           </a>
         </div>
       </section>
 
-      <!-- 外部サービス・LINE・紹介 -->
+      <!-- 外部サービス -->
       <section class="block">
         <h2>🌍 紹介・外部サービス</h2>
-
         <div class="grid">
+
           <a class="card" href="#" target="_blank">
-            <h3>ドライバー紹介ページ</h3>
-            <p>各リーダー別 紹介フォーム・QR（準備中）</p>
+            <h3>ドライバー紹介</h3>
+            <p>各リーダー別QR（準備中）</p>
           </a>
 
-          <a class="card"
-             href="https://lin.ee/qExHnzh"
-             target="_blank">
+          <a class="card" href="https://lin.ee/qExHnzh" target="_blank">
             <h3>OFAメンバーシップLINE</h3>
-            <p>報告・点呼・事故・車両など契約者専用</p>
+            <p>契約者専用ライン</p>
           </a>
 
-          <a class="card"
-             href="https://lin.ee/RUj5HfL"
-             target="_blank">
+          <a class="card" href="https://lin.ee/RUj5HfL" target="_blank">
             <h3>OFAグループ公式LINE（一般）</h3>
-            <p>求人・問い合わせ・ご相談はこちら</p>
+            <p>求人・問い合わせ</p>
           </a>
 
           <a class="card" href="#" target="_blank">
             <h3>送りっぱ！ / tebura</h3>
-            <p>店舗向け発送サービス案内（準備中）</p>
+            <p>店舗向け発送サービス</p>
           </a>
         </div>
       </section>
@@ -169,16 +152,15 @@
       <!-- ヘルプ -->
       <section class="block">
         <h2>❓ ヘルプ・連絡先</h2>
-
         <div class="grid">
           <a class="card" href="#" target="_blank">
             <h3>現場トラブルQ&A</h3>
-            <p>配達不可・代引トラブル・悪天候時の対応（準備中）</p>
+            <p>配達不可・代引トラブル</p>
           </a>
 
           <a class="card" href="#" target="_blank">
             <h3>運行管理者・本部連絡先</h3>
-            <p>緊急連絡先・営業時間・連絡ルール（準備中）</p>
+            <p>緊急連絡先・対応ルール</p>
           </a>
         </div>
       </section>
@@ -190,7 +172,7 @@
     </footer>
   </div>
 
-  <!-- ★ここに直接JSを書く：外部ファイルに依存しない -->
+  <!-- ★JavaScriptを直接埋め込み（確実に動く） -->
   <script>
     (function () {
       function init() {
@@ -204,7 +186,7 @@
           return;
         }
 
-        // ★暗証番号（ここを変えればOK）
+        // ★パスコードをここで設定
         var ACCESS_CODE = "ofa2025";
 
         function unlock() {
@@ -220,14 +202,9 @@
           }
         }
 
-        // グローバルにも保険で置いておく
-        window.ofaUnlock = unlock;
-
         button.addEventListener("click", unlock);
         input.addEventListener("keydown", function (e) {
-          if (e.key === "Enter" || e.keyCode === 13) {
-            unlock();
-          }
+          if (e.key === "Enter" || e.keyCode === 13) unlock();
         });
       }
 
@@ -238,5 +215,6 @@
       }
     })();
   </script>
+
 </body>
 </html>
