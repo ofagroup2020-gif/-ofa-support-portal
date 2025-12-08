@@ -1,68 +1,110 @@
-      <!-- 今日の業務（アイコンボタン版） -->
-      <section class="block">
-        <h2 class="icon-section-title">
-          <span>📅</span> 今日の業務
-        </h2>
+<!DOCTYPE html>
+<html lang="ja">
 
-        <div class="icon-grid">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>OFA DRIVER SUPPORT</title>
+  <link rel="stylesheet" href="styles.css">
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700;900&display=swap" rel="stylesheet">
+</head>
 
-          <!-- Web点呼 -->
-          <a class="icon-btn"
-             href="https://ofagroup2020-gif.github.io/ofa-nippou/web_tenko_ofa.html"
-             target="_blank">
-            <div class="icon-circle">
-              🚦
-            </div>
-            <div class="icon-label-main">Web点呼</div>
-            <div class="icon-label-sub">始業・終業</div>
-          </a>
+<body>
 
-          <!-- 日報・売上計算 -->
-          <a class="icon-btn"
-             href="https://ofagroup2020-gif.github.io/ofa-uriage-keisan/"
-             target="_blank">
-            <div class="icon-circle pink">
-              📊
-            </div>
-            <div class="icon-label-main">日報・売上</div>
-            <div class="icon-label-sub">件数・チャーター</div>
-          </a>
+  <header class="main-header">
+    <h1>OFA DRIVER SUPPORT</h1>
+    <p>株式会社OFA 軽貨物ドライバーポータル</p>
+  </header>
 
-          <!-- 事故・トラブル（準備中） -->
-          <a class="icon-btn" href="#" target="_blank">
-            <div class="icon-circle blue">
-              ⚠️
-            </div>
-            <div class="icon-label-main">事故・トラブル</div>
-            <div class="icon-label-sub">報告（準備中）</div>
-          </a>
+  <section class="section">
+    <h2>📅 今日の業務</h2>
 
-          <!-- 車両管理 -->
-          <a class="icon-btn" href="#" target="_blank">
-            <div class="icon-circle green">
-              🚐
-            </div>
-            <div class="icon-label-main">車両管理</div>
-            <div class="icon-label-sub">車検・保険など</div>
-          </a>
+    <div class="card" onclick="location.href='https://ofagroup2020-gif.github.io/ofa-nippou/web_tenko_ofa.html'">
+      <div class="icon">🧑‍✈️</div>
+      <div class="text">
+        <h3>Web点呼（始業・終業）</h3>
+        <p>アルコールチェック・体調・車両確認</p>
+      </div>
+    </div>
 
-          <!-- 契約書・FC資料 -->
-          <a class="icon-btn" href="#" target="_blank">
-            <div class="icon-circle pink">
-              📑
-            </div>
-            <div class="icon-label-main">契約書</div>
-            <div class="icon-label-sub">FC資料</div>
-          </a>
+    <div class="card" onclick="location.href='https://ofagroup2020-gif.github.io/ofa-uriage-keisan/'">
+      <div class="icon">📊</div>
+      <div class="text">
+        <h3>日報・売上計算</h3>
+        <p>件数・チャーター・個建など</p>
+      </div>
+    </div>
 
-          <!-- 申請フォーム -->
-          <a class="icon-btn" href="#" target="_blank">
-            <div class="icon-circle blue">
-              📝
-            </div>
-            <div class="icon-label-main">申請フォーム</div>
-            <div class="icon-label-sub">休車・経費など</div>
-          </a>
+    <div class="card disabled">
+      <div class="icon">⚠️</div>
+      <div class="text">
+        <h3>事故・トラブル報告（準備中）</h3>
+        <p>事故・クレーム共有</p>
+      </div>
+    </div>
+  </section>
 
-        </div>
-      </section>
+  <section class="section">
+    <h2>🚐 車両・契約・申請</h2>
+
+    <div class="card disabled">
+      <div class="icon">🚗</div>
+      <div class="text">
+        <h3>車両管理</h3>
+        <p>車検・保険・整備記録（準備中）</p>
+      </div>
+    </div>
+
+    <div class="card disabled">
+      <div class="icon">📄</div>
+      <div class="text">
+        <h3>契約書・FC資料</h3>
+        <p>業務委託・FC関係</p>
+      </div>
+    </div>
+
+    <div class="card disabled">
+      <div class="icon">📝</div>
+      <div class="text">
+        <h3>申請フォーム</h3>
+        <p>休車・経費など（準備中）</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <h2>🤝 コミュニティ</h2>
+
+    <div class="card disabled">
+      <div class="icon">💬</div>
+      <div class="text">
+        <h3>メンバー掲示板</h3>
+        <p>悩み相談・共有（準備中）</p>
+      </div>
+    </div>
+
+    <div class="card" onclick="location.href='https://www.instagram.com/ofa.group_inc?igsh=MTEweDYxc2xraGN5ZA%3D%3D&utm_source=qr'">
+      <div class="icon">📷</div>
+      <div class="text">
+        <h3>Instagram</h3>
+        <p>OFAグループ公式SNS</p>
+      </div>
+    </div>
+
+    <div class="card" onclick="location.href='https://ofagroup.blogspot.com/?m=1'">
+      <div class="icon">📰</div>
+      <div class="text">
+        <h3>OFAブログ</h3>
+        <p>最新情報・代表メッセージ</p>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <p>© 2025 OFA GROUP</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+
+</html>
