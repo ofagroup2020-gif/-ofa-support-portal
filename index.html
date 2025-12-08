@@ -5,12 +5,13 @@
   <title>OFA DRIVER SUPPORT PORTAL</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <!-- CSSファイル（styles.css） -->
+  <!-- CSSファイル -->
   <link rel="stylesheet" href="styles.css">
 </head>
 
 <body>
-  <!-- ロック画面 -->
+
+  <!-- ▼ ロック画面（ログイン） -->
   <div id="lock-screen">
     <header class="lock-header">
       <h1>OFA DRIVER SUPPORT</h1>
@@ -30,7 +31,6 @@
         placeholder="パスコードを入力"
       >
 
-      <!-- ここで ofaUnlock() を直接呼ぶ -->
       <button id="unlockButton" class="primary-button" onclick="ofaUnlock()">
         ログイン
       </button>
@@ -38,19 +38,23 @@
       <p id="lockMessage" class="lock-message"></p>
     </main>
   </div>
+  <!-- ▲ ロック画面  -->
 
-  <!-- アプリ本体 -->
-  <div id="app" class="hidden">
+
+  <!-- ▼ アプリ本体 -->
+  <div id="app" style="display:none;">
     <header class="app-header">
       <h1>OFA DRIVER SUPPORT</h1>
-      <p>株式会社OFA 軽貨物ドライバー業務ポータル</p>
+      <p>株式会社OFA 軽貨物ドライバーポータル</p>
     </header>
 
     <main class="app-main">
+
       <!-- 今日の業務 -->
       <section class="block">
         <h2>📅 今日の業務</h2>
         <div class="grid">
+
           <a class="card card-main"
              href="https://ofagroup2020-gif.github.io/ofa-nippou/web_tenko_ofa.html"
              target="_blank">
@@ -65,10 +69,11 @@
             <p>配達件数・チャーター・個建など</p>
           </a>
 
-          <a class="card card-alert" href="#" target="_blank">
+          <a class="card card-alert" href="#">
             <h3>事故・トラブル報告（準備中）</h3>
-            <p>事故・ヒヤリハット共有</p>
+            <p>事故・クレーム共有</p>
           </a>
+
         </div>
       </section>
 
@@ -76,6 +81,7 @@
       <section class="block">
         <h2>🚐 車両・契約・申請</h2>
         <div class="grid">
+
           <a class="card" href="#" target="_blank">
             <h3>車両管理</h3>
             <p>車検・保険・整備記録（準備中）</p>
@@ -83,43 +89,46 @@
 
           <a class="card" href="#" target="_blank">
             <h3>契約書・FC資料</h3>
-            <p>業務委託・FC関連</p>
+            <p>業務委託・FC関係</p>
           </a>
 
           <a class="card" href="#" target="_blank">
-            <h3>各種申請フォーム</h3>
-            <p>休車・経費・名義変更など</p>
+            <h3>申請フォーム</h3>
+            <p>休車・経費など</p>
           </a>
+
         </div>
       </section>
 
       <!-- コミュニティ -->
       <section class="block">
-        <h2>🤝 コミュニティ・情報共有</h2>
+        <h2>🤝 コミュニティ</h2>
         <div class="grid">
-          <a class="card" href="#" target="_blank">
+
+          <a class="card" href="#">
             <h3>メンバー掲示板</h3>
-            <p>匿名相談・意見交換（準備中）</p>
+            <p>匿名相談・共有（準備中）</p>
           </a>
 
           <a class="card"
              href="https://ofagroup.blogspot.com/?m=1"
              target="_blank">
             <h3>OFAブログ / お知らせ</h3>
-            <p>法改正・繁忙期情報など</p>
+            <p>業務情報・現場ニュース</p>
           </a>
 
           <a class="card"
              href="https://www.instagram.com/ofa.group_inc?igsh=MTEweDYxc2xraGN5ZA%3D%3D&utm_source=qr"
              target="_blank">
-            <h3>OFA公式Instagram</h3>
+            <h3>公式Instagram</h3>
             <p>現場の様子・日常</p>
           </a>
 
-          <a class="card" href="#" target="_blank">
+          <a class="card" href="#">
             <h3>研修動画（OFA Academy）</h3>
-            <p>新人研修・マナー（準備中）</p>
+            <p>新人研修（準備中）</p>
           </a>
+
         </div>
       </section>
 
@@ -127,25 +136,27 @@
       <section class="block">
         <h2>🌍 紹介・外部サービス</h2>
         <div class="grid">
-          <a class="card" href="#" target="_blank">
+
+          <a class="card" href="#">
             <h3>ドライバー紹介</h3>
             <p>各リーダー別QR（準備中）</p>
           </a>
 
           <a class="card" href="https://lin.ee/qExHnzh" target="_blank">
             <h3>OFAメンバーシップLINE</h3>
-            <p>契約者専用ライン</p>
+            <p>契約者専用</p>
           </a>
 
           <a class="card" href="https://lin.ee/RUj5HfL" target="_blank">
-            <h3>OFAグループ公式LINE（一般）</h3>
-            <p>求人・問い合わせ</p>
+            <h3>OFA公式LINE（一般）</h3>
+            <p>求人・お問い合わせ</p>
           </a>
 
-          <a class="card" href="#" target="_blank">
-            <h3>送りっぱ！ / tebura</h3>
+          <a class="card" href="#">
+            <h3>送りっぱ！（tebura）</h3>
             <p>店舗向け発送サービス</p>
           </a>
+
         </div>
       </section>
 
@@ -153,15 +164,17 @@
       <section class="block">
         <h2>❓ ヘルプ・連絡先</h2>
         <div class="grid">
-          <a class="card" href="#" target="_blank">
+
+          <a class="card" href="#">
             <h3>現場トラブルQ&A</h3>
-            <p>配達不可・代引トラブル</p>
+            <p>配達不可・代引問題対応</p>
           </a>
 
-          <a class="card" href="#" target="_blank">
-            <h3>運行管理者・本部連絡先</h3>
-            <p>緊急連絡先・対応ルール</p>
+          <a class="card" href="#">
+            <h3>運行管理者 / 本部連絡先</h3>
+            <p>緊急時の連絡</p>
           </a>
+
         </div>
       </section>
 
@@ -171,8 +184,10 @@
       <p>© 2025 OFA GROUP / One for All, All for One</p>
     </footer>
   </div>
+  <!-- ▲ アプリ本体 -->
 
-  <!-- JS（テスト用アラート付き） -->
+
+  <!-- ▼ JS（確実に切り替わるバージョン） -->
   <script>
     var OFA_ACCESS_CODE = "ofa2025";
 
@@ -182,30 +197,26 @@
       var input = document.getElementById("accessCode");
       var message = document.getElementById("lockMessage");
 
-      if (!lockScreen || !app || !input || !message) {
-        return;
-      }
+      if (!lockScreen || !app || !input) return;
 
       var value = (input.value || "").trim();
 
-      // ★テスト用：ボタンが反応しているかを確認する
-      alert("ログインボタンが押されました。\n入力値: " + value);
-
       if (value === OFA_ACCESS_CODE) {
-        lockScreen.classList.add("hidden");
-        app.classList.remove("hidden");
-        message.textContent = "";
+        // 🔥 クラスに頼らず直接表示切り替え（100%動く）
+        lockScreen.style.display = "none";
+        app.style.display = "block";
       } else {
-        message.textContent = "パスコードが違います。もう一度入力してください。";
+        message.textContent = "パスコードが違います。";
         input.value = "";
         input.focus();
       }
     }
 
-    // Enterキーでも解錠
+    // Enter キーでもログイン
     document.addEventListener("DOMContentLoaded", function () {
       var input = document.getElementById("accessCode");
       if (!input) return;
+
       input.addEventListener("keydown", function (e) {
         if (e.key === "Enter" || e.keyCode === 13) {
           ofaUnlock();
