@@ -1,41 +1,73 @@
-// とにかく確実に動くシンプル版パスコードロック
-window.addEventListener("load", function () {
-  var lockScreen = document.getElementById("lock-screen");
-  var app = document.getElementById("app");
-  var input = document.getElementById("accessCode");
-  var button = document.getElementById("unlockButton");
-  var message = document.getElementById("lockMessage");
+// ==============================
+// OFA DRIVER SUPPORT - Login
+// ==============================
 
-  // 要素がなければ何もしない（エラー防止）
-  if (!lockScreen || !app || !input || !button || !message) {
+// ★ ここがログインパスワード（変更済み）
+const LOGIN_PASSWORD = "OFA/202602";
+
+// ログイン保持キー
+const LS_KEY = "ofa_driver_support_logged_in";
+
+const loginView = document.getElementById("loginView");
+const appView = document.getElementById("appView");
+const passwordInput = document.getElementById("passwordInput");
+const loginBtn = document.getElementById("loginBtn");
+const logoutBtn = document.getElementById("logoutBtn");
+const errorMsg = document.getElementById("errorMsg");
+
+function showApp() {
+  loginView.classList.add("hidden");
+  appView.classList.remove("hidden");
+}
+
+function showLogin() {
+  appView.classList.add("hidden");
+  loginView.classList.remove("hidden");
+  passwordInput.value = "";
+  passwordInput.focus();
+}
+
+function setError(message) {
+  errorMsg.textContent = message || "";
+}
+
+function normalizeInput(value) {
+  // iPhoneで勝手に入る全角スペース等を潰す
+  return (value || "").trim();
+}
+
+function handleLogin() {
+  setError("");
+  const input = normalizeInput(passwordInput.value);
+
+  if (!input) {
+    setError("パスコードを入力してください。");
     return;
   }
 
-  // ★ここが暗証番号（好きなものに変えてOK）
-  var ACCESS_CODE = "ofa2025";
-
-  function unlock() {
-    var value = (input.value || "").trim();
-    if (value === ACCESS_CODE) {
-      // 成功 → ロック画面を隠してアプリ本体を表示
-      lockScreen.classList.add("hidden");
-      app.classList.remove("hidden");
-      message.textContent = "";
-    } else {
-      // 失敗
-      message.textContent = "パスコードが違います。もう一度入力してください。";
-      input.value = "";
-      input.focus();
-    }
+  if (input === LOGIN_PASSWORD) {
+    localStorage.setItem(LS_KEY, "1");
+    showApp();
+  } else {
+    setError("パスコードが違います。もう一度入力してください。");
   }
+}
 
-  // ボタンを押したとき
-  button.addEventListener("click", unlock);
+function handleLogout() {
+  localStorage.removeItem(LS_KEY);
+  showLogin();
+}
 
-  // Enterキーでもログイン
-  input.addEventListener("keydown", function (e) {
-    if (e.key === "Enter" || e.keyCode === 13) {
-      unlock();
-    }
+// 初期表示（ログイン済みならメニュー表示）
+(function init() {
+  const loggedIn = localStorage.getItem(LS_KEY) === "1";
+  if (loggedIn) showApp();
+  else showLogin();
+
+  loginBtn.addEventListener("click", handleLogin);
+  logoutBtn.addEventListener("click", handleLogout);
+
+  passwordInput.addEventListener("keydown", (e) => {
+    if (e.key === "Enter") handleLogin();
   });
-});
+})();
